@@ -3,7 +3,6 @@
 This project is a Library Management System API built using Spring Boot. It allows librarians to manage books, patrons, and borrowing records efficiently.
 
 ## Table of Contents
-<hr>
 
 1. [Project Description](#project-description)
 2. [Database erd](#project-description)
@@ -12,14 +11,13 @@ This project is a Library Management System API built using Spring Boot. It allo
 5. [API Documentation](#api-documentation)
 
 ## Project Description
-<hr>
+
 The Library Management System API is designed to streamline the operations of a library by allowing librarians to manage books, patrons, and borrowing records efficiently. Built using Spring Boot, this system provides a robust and scalable backend for library management, offering RESTful endpoints for easy interaction.
 
 ## Database erd
 ![image](Database/erd.png)
 
 ## Features
-<hr>
 
 ### 1- Authentication and Authorization
 - **Add a new liberian**  
@@ -84,7 +82,6 @@ The Library Management System API is designed to streamline the operations of a 
   Records the return of a borrowed book by a patron, specifying the book and patron IDs.
 
 ## Technologies Used
-<hr>
 
 - **Java**  
 - **Spring Boot**  
@@ -95,18 +92,23 @@ The Library Management System API is designed to streamline the operations of a 
 - **My-sql**  
 
 ## API Documentation
-<hr>
+
 
 - **Swagger Documentation**:
   - Access the Swagger UI to explore the API endpoints:
     - URL: `http://localhost:8080/swagger-ui/index.html`
 
 - **Authentication Endpoints**:
-  - `POST /auth/register`
-  - `POST /auth/login`
+  - `POST /api/auth/register`
+  - `POST /api/auth/login`
 
 - **Book Endpoints**:
-
+- `GET /api/books/`
+- `GET /api/books/{id}`
+- `POST /api/books/`
+- `PUT /api/books/`
+- `DELETE /api/books/{id}`
+  
 - **Patron Endpoints**:
 
 - **Borrowing endpoints**:
