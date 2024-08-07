@@ -103,11 +103,11 @@ The Library Management System API is designed to streamline the operations of a 
   - `POST /api/auth/login`
 
 - **Book Endpoints**:
-- `GET /api/books/`
-- `GET /api/books/{id}`
-- `POST /api/books/`
-- `PUT /api/books/`
-- `DELETE /api/books/{id}`
+  - `GET /api/books/`
+  - `GET /api/books/{id}`
+  - `POST /api/books/`
+  - `PUT /api/books/`
+  - `DELETE /api/books/{id}`
   
 - **Patron Endpoints**:
 
