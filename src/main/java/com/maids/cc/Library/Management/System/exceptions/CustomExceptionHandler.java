@@ -3,6 +3,7 @@ package com.maids.cc.Library.Management.System.exceptions;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -40,6 +41,24 @@ public class CustomExceptionHandler {
         response.put("status" , HttpStatus.BAD_REQUEST.value());
         response.put("message" , exception.getMessage()) ;
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(response);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Map<String , Object>> badCredentialsException(BadCredentialsException exception) {
+        Map<String , Object> response = new LinkedHashMap<>() ;
+        response.put("status" , HttpStatus.BAD_REQUEST.value());
+        response.put("message" , exception.getMessage()) ;
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(response);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Map<String , Object>> badCredentialsException(NotFoundCustomException exception) {
+        Map<String , Object> response = new LinkedHashMap<>() ;
+        response.put("status" , HttpStatus.NOT_FOUND.value());
+        response.put("message" , exception.getMessage()) ;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(response);
     }
 

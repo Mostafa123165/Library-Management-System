@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class BookRequestDto {
 
+    private Long id;
+
     @NotNull(message = "isbn is required")
     private String isbn;
 

@@ -7,6 +7,7 @@ import com.maids.cc.Library.Management.System.dto.response.MessageResponseDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,24 +25,55 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public Book findBookById(@PathVariable("id") Long id) {
-        System.out.println(id);
-        return bookService.findById(id);
+    public ResponseEntity<Book> findBookById(@PathVariable("id") Long id) {
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(bookService.findById(id));
     }
 
     @PostMapping("/")
-    public MessageResponseDto add(@Valid @RequestBody BookRequestDto bookDto) {
+    public ResponseEntity<MessageResponseDto> add(@Valid @RequestBody BookRequestDto bookDto) {
 
         Book book = bookService.addNewBook(bookDto);
-        return MessageResponseDto.builder()
-                .status(HttpStatus.ACCEPTED.value())
-                .message("Add book Successfully - " + book.getId())
-                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(MessageResponseDto.builder()
+                        .status(HttpStatus.OK.value())
+                        .message("Add book Successfully - " + book.getId())
+                        .build()
+                );
     }
 
-    //public void update(@Valid @RequestBody BookDto bookDto) {}
+    @PutMapping("/")
+    public ResponseEntity<MessageResponseDto> update(@Valid @RequestBody BookRequestDto bookDto) {
 
-    //public void deleteById(@PathVariable("id") Long id) {}
+        Book book = bookService.update(bookDto);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(MessageResponseDto.builder()
+                        .status(HttpStatus.OK.value())
+                        .message("Updated book Successfully - " + book.getId())
+                        .build()
+                );
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<MessageResponseDto> delete(@PathVariable Long id) {
+
+        bookService.deleteById(id);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(MessageResponseDto.builder()
+                        .status(HttpStatus.OK.value())
+                        .message("deleted book Successfully - " + id)
+                        .build()
+                );
+    }
 
 
 }

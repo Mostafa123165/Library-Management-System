@@ -23,10 +23,10 @@ public class BorrowingRecord {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
-    private Book books ;
+    private Book book ;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patron_id")
-    private Patron patrons;
+    private Patron patron;
 
 }
