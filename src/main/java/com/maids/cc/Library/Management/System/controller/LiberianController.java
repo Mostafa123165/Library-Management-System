@@ -23,7 +23,7 @@ public class LiberianController {
     private final LiberianService liberianService;
 
 
-    @PostMapping("/")
+    @PostMapping("/register")
     public ResponseEntity<Object> registerAdmin(@Valid @RequestBody LiberianRequestDto liberianRequestDto) {
         Liberian liberian = liberianService.registerAdmin(liberianRequestDto);
         return ResponseEntity
