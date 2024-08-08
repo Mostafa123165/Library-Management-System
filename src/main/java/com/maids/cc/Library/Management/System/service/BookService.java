@@ -65,12 +65,12 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public Book checkBookIsExistedByIdOrThrowException(Long id) {
+    private Book checkBookIsExistedByIdOrThrowException(Long id) {
         return bookRepository.findById(id).orElseThrow(
                 () -> new NotFoundCustomException("Book with Id " + id + " not found"));
     }
 
-    public void checkBookIsNotExistedByIsbnOrThrowException(String isbn) {
+    private void checkBookIsNotExistedByIsbnOrThrowException(String isbn) {
         if (bookRepository.findByIsbn(isbn).isPresent()) {
             throw new NotFoundCustomException("Book with ISBN " + isbn + " already exists.");
         }

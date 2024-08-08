@@ -14,10 +14,10 @@ public class Patron {
     private Long id;
 
     @Column(name = "name")
-    private Long name;
+    private String name;
 
     @Column(name = "email")
-    private Long email;
+    private String email;
 
     @Column(name = "address")
     private String address;
