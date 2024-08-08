@@ -110,6 +110,11 @@ The Library Management System API is designed to streamline the operations of a 
   - `DELETE /api/books/{id}`
   
 - **Patron Endpoints**:
+  - `GET /api/patrons/`
+  - `GET /api/patrons/{id}`
+  - `POST /api/patrons/`
+  - `PUT /api/patrons/`
+  - `DELETE /api/patrons/{id}`
 
 - **Borrowing endpoints**:
 
