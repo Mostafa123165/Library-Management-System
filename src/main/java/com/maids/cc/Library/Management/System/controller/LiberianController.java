@@ -27,10 +27,10 @@ public class LiberianController {
     public ResponseEntity<Object> registerAdmin(@Valid @RequestBody LiberianRequestDto liberianRequestDto) {
         Liberian liberian = liberianService.registerAdmin(liberianRequestDto);
         return ResponseEntity
-                .status(HttpStatus.OK)
+                .status(HttpStatus.CREATED)
                 .body(
                         MessageResponseDto.builder()
-                                .status(HttpStatus.OK.value())
+                                .status(HttpStatus.CREATED.value())
                                 .message("Add liberian Successfully - " + liberian.getId())
                                 .build()
                 );

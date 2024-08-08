@@ -120,6 +120,8 @@ The Library Management System API is designed to streamline the operations of a 
   - `POST /api/borrow/{bookId}/patron/{patronId}`
   - `PUT /api/return/{bookId}/patron/{patronId}`
 
-  
+## Additional Notes
 
+- **Authentication and authorization are required.**
+  - `Book, Patron, Borrowing`
 
