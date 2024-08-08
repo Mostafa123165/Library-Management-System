@@ -117,8 +117,8 @@ The Library Management System API is designed to streamline the operations of a 
   - `DELETE /api/patrons/{id}`
 
 - **Borrowing endpoints**:
-
-  
+  - `POST /api/borrow/{bookId}/patron/{patronId}`
+  - `PUT /api/return/{bookId}/patron/{patronId}`
 
   
 

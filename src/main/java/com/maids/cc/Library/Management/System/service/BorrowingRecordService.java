@@ -35,4 +35,18 @@ public class BorrowingRecordService {
 
         borrowingRecordRepository.save(borrowingRecord);
     }
+
+    @Transactional
+    public void returnBook(Long bookId, Long patronId) {
+
+        BorrowingRecord borrowingRecord = borrowingRecordRepository.findByBookIdAndPatronId(bookId, patronId)
+                .orElseThrow(
+                        () -> new BadRequestException("This patron with id "+patronId+" has not borrowed this book with id "+bookId)
+                );
+
+        borrowingRecord.setReturnDate(LocalDateTime.now());
+
+        borrowingRecordRepository.save(borrowingRecord);
+    }
+
 }

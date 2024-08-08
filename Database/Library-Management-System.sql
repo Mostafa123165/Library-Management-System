@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS borrowing_records(
 	id BIGINT  PRIMARY KEY AUTO_INCREMENT,
     book_id     BIGINT ,
     patron_id   BIGINT ,
-    return_date    DATE DEFAULT NULL ,
-    borrowing_date DATE NOT NULL,
+    return_date    DATETIME DEFAULT NULL ,
+    borrowing_date DATETIME NOT NULL,
     CONSTRAINT foreign_key_book_id   FOREIGN KEY (book_id)   REFERENCES book(id),
     CONSTRAINT foreign_key_patron_id FOREIGN KEY (patron_id) REFERENCES patron(id)
 );
