@@ -88,6 +88,7 @@ The Library Management System API is designed to streamline the operations of a 
 - **Spring Data JPA**  
 - **Spring AOP**  
 - **Spring Security**  
+- **Caching**
 - **Maven**  
 - **My-sql**  
 

@@ -8,6 +8,8 @@ import com.maids.cc.Library.Management.System.mapper.PatronMapper;
 import com.maids.cc.Library.Management.System.repository.BorrowingRecordRepository;
 import com.maids.cc.Library.Management.System.repository.PatronRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,18 +24,21 @@ public class PatronService {
     private PatronMapper patronMapper;
 
     @Transactional
+    @Cacheable(value = "patrons")
     public List<Patron> findAll() {
 
         return patronRepository.findAll();
     }
 
     @Transactional
+    @Cacheable(value = "patrons",key = "#id")
     public Patron findById(Long id) {
 
         return checkPatronIsExistedByIdOrThrowException(id);
     }
 
     @Transactional
+    @CacheEvict(value = "patrons",allEntries = true)
     public Patron addNewPatron(PatronRequestDto patronRequestDto) {
 
         checkPatronIsNotExistedByPhoneOrThrowException(patronRequestDto.getPhone());
@@ -45,6 +50,7 @@ public class PatronService {
     }
 
     @Transactional
+    @CacheEvict(value = "patrons",allEntries = true)
     public Patron update(PatronRequestDto patronRequestDto) {
 
         checkPatronIsExistedByIdOrThrowException(patronRequestDto.getId());
@@ -55,6 +61,7 @@ public class PatronService {
     }
 
     @Transactional
+    @CacheEvict(value = "patrons",allEntries = true)
     public void delete(Long id) {
 
         Patron patron = checkPatronIsExistedByIdOrThrowException(id);

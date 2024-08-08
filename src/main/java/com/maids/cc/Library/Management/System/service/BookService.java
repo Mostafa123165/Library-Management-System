@@ -8,6 +8,8 @@ import com.maids.cc.Library.Management.System.mapper.BookMapper;
 import com.maids.cc.Library.Management.System.repository.BookRepository;
 import com.maids.cc.Library.Management.System.repository.BorrowingRecordRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,17 +25,21 @@ public class BookService {
 
 
     @Transactional
+    @Cacheable(value = "books")
     public List<Book> findAll() {
+
         return bookRepository.findAll();
     }
 
     @Transactional
+    @Cacheable(value = "books" , key = "#id")
     public Book findById(Long id) {
 
         return checkBookIsExistedByIdOrThrowException(id);
     }
 
     @Transactional
+    @CacheEvict(value = "books",allEntries = true)
     public Book addNewBook(BookRequestDto bookDto) {
 
         checkBookIsNotExistedByIsbnOrThrowException(bookDto.getIsbn());
@@ -44,6 +50,7 @@ public class BookService {
 
 
     @Transactional
+    @CacheEvict(value = "books",allEntries = true)
     public Book update(BookRequestDto bookDto) {
 
         checkBookIsExistedByIdOrThrowException(bookDto.getId());
@@ -54,6 +61,7 @@ public class BookService {
     }
 
     @Transactional
+    @CacheEvict(value = "books",allEntries = true)
     public void deleteById(Long id) {
 
         Book book = checkBookIsExistedByIdOrThrowException(id);
