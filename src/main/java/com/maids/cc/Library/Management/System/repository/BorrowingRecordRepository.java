@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface BorrowingRecordRepository extends JpaRepository<BorrowingRecord, Integer> {
      boolean existsByBook(Book book);
      boolean existsByPatron(Patron patron);
+     boolean existsByPatronAndBook(Patron patron,Book book);
 }

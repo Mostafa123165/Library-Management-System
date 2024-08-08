@@ -1,9 +1,11 @@
 package com.maids.cc.Library.Management.System.entities;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -16,10 +18,10 @@ public class BorrowingRecord {
     private Long id;
 
     @Column(name = "borrowing_date")
-    private Instant borrowingDate;
+    private LocalDateTime borrowingDate;
 
     @Column(name = "return_date")
-    private Instant returnDate;
+    private LocalDateTime returnDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
